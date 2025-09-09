@@ -156,19 +156,11 @@ export default function App() {
         <div className="container mx-auto px-4 py-8">
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div>
-              <h3 className="mb-3">Contact Info</h3>
+              <h3 className="mb-3">Studio Info</h3>
               <div className="space-y-2 text-sm text-muted-foreground">
-                <p>📍 123 Tattoo Street, Art District</p>
-                <p>📞 (555) 123-4567</p>
-                <p>✉️ hello@inkstudio.com</p>
-              </div>
-            </div>
-            <div>
-              <h3 className="mb-3">Studio Hours</h3>
-              <div className="space-y-2 text-sm text-muted-foreground">
-                <p>Tuesday - Friday: 12pm - 8pm</p>
-                <p>Saturday: 10am - 6pm</p>
-                <p>Sunday & Monday: Closed</p>
+                <p>📍 Private Studio</p>
+                <p>Saturday & Sunday: 10am - 2pm</p>
+                <p>hello-sleepytimetea@gmail.com</p>
               </div>
             </div>
             <div>

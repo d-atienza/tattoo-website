@@ -14,30 +14,30 @@ interface TattooDesign {
 const tattooDesigns: TattooDesign[] = [
   {
     id: "1",
-    title: "Traditional Rose",
-    category: "Traditional",
-    imageUrl: "https://images.unsplash.com/photo-1665085326630-b01fea9a613d?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0YXR0b28lMjBkZXNpZ24lMjBhcnR8ZW58MXx8fHwxNzU2ODg5NDU0fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
-    description: "Classic traditional style rose with bold lines and vibrant colors"
+    title: "A1",
+    category: "Flash",
+    imageUrl: "https://live.staticflickr.com/65535/54776783975_d4794bb98f_m.jpg",
+    description: "Classic Flash style rose with bold lines and vibrant colors"
   },
   {
     id: "2",
-    title: "Flash Art Collection",
-    category: "Traditional",
-    imageUrl: "https://images.unsplash.com/photo-1730148137252-2fc494f15abf?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHx0cmFkaXRpb25hbCUyMHRhdHRvbyUyMGZsYXNofGVufDF8fHx8MTc1Njg4OTQ1NHww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    title: "A2",
+    category: "Flash",
+    imageUrl: "https://live.staticflickr.com/65535/54776783975_d4794bb98f_m.jpg",
     description: "Traditional flash art designs perfect for walk-ins"
   },
   {
     id: "3",
-    title: "Geometric Mandala",
-    category: "Geometric",
-    imageUrl: "https://images.unsplash.com/photo-1566485763217-b5dfcc375a09?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxnZW9tZXRyaWMlMjB0YXR0b28lMjBkZXNpZ258ZW58MXx8fHwxNzU2ODg5NDU1fDA&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    title: "A3",
+    category: "Flash",
+    imageUrl: "https://live.staticflickr.com/65535/54776783975_d4794bb98f_m.jpg",
     description: "Intricate geometric patterns and sacred geometry"
   },
   {
     id: "4",
-    title: "Minimalist Line Art",
-    category: "Minimalist",
-    imageUrl: "https://images.unsplash.com/photo-1619009542298-584066f6fd30?crop=entropy&cs=tinysrgb&fit=max&fm=jpg&ixid=M3w3Nzg4Nzd8MHwxfHNlYXJjaHwxfHxtaW5pbWFsaXN0JTIwdGF0dG9vJTIwYXJ0fGVufDF8fHx8MTc1Njg4OTQ1NXww&ixlib=rb-4.1.0&q=80&w=1080&utm_source=figma&utm_medium=referral",
+    title: "A4",
+    category: "Flash",
+    imageUrl: "https://live.staticflickr.com/65535/54776783975_d4794bb98f_m.jpg",
     description: "Clean, simple lines perfect for first-time tattoos"
   }
 ];
