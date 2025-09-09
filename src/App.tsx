@@ -70,11 +70,11 @@ export default function App() {
                 </div>
 
                 <div className="text-sm text-muted-foreground mb-6">
-                  <p>We'll send you a confirmation email shortly with preparation instructions.</p>
+                  <p>We'll send you a email shortly to confirm your enquiry has been received.</p>
                   {selectedDesign === 'custom' && (
                     <p className="text-primary">Please bring your design reference or be ready to discuss your ideas during the consultation.</p>
                   )}
-                  <p>If you need to reschedule, please call us at least 24 hours in advance.</p>
+                  <p>If you need to reschedule, please email us at least 24 hours in advance.</p>
                 </div>
 
                 <Button onClick={resetBooking} variant="outline">
@@ -95,18 +95,11 @@ export default function App() {
         <div className="container mx-auto px-4 py-6">
           <div className="flex items-center justify-between">
             <div>
-              <h1>Ink Studio</h1>
-              <p className="text-muted-foreground">Professional Tattoo Artistry</p>
+              <h1>sleepytimetea studios</h1>
+              <p className="text-muted-foreground">@_sleepytimetea_</p>
             </div>
-            <div className="flex items-center gap-4">
-              <Badge variant="secondary" className="hidden sm:flex">
-                <Clock className="h-3 w-3 mr-1" />
-                Open Tue-Sat
-              </Badge>
-              <Badge variant="secondary" className="hidden sm:flex">
-                <Shield className="h-3 w-3 mr-1" />
-                Licensed Artists
-              </Badge>
+            <div>
+              <img src='https://live.staticflickr.com/65535/54776783975_d4794bb98f_m.jpg' width="100px" height="100px"/>
             </div>
           </div>
         </div>

@@ -31,17 +31,9 @@ const bodyParts = [
   "Arm (Lower)",
   "Leg (Upper)",
   "Leg (Lower)",
-  "Back (Full)",
   "Back (Upper)",
   "Back (Lower)",
   "Chest",
-  "Shoulder",
-  "Neck",
-  "Hand",
-  "Foot",
-  "Ribs",
-  "Stomach",
-  "Other"
 ];
 
 const timeSlots = [
@@ -51,9 +43,6 @@ const timeSlots = [
   "12:00 PM",
   "1:00 PM",
   "2:00 PM",
-  "3:00 PM",
-  "4:00 PM",
-  "5:00 PM"
 ];
 
 export function BookingForm({ selectedDesign, onSubmit }: BookingFormProps) {
@@ -65,8 +54,6 @@ export function BookingForm({ selectedDesign, onSubmit }: BookingFormProps) {
     firstName: "",
     lastName: "",
     email: "",
-    phone: "",
-    address: "",
     notes: ""
   });
 
@@ -88,7 +75,6 @@ export function BookingForm({ selectedDesign, onSubmit }: BookingFormProps) {
                       formData.firstName && 
                       formData.lastName && 
                       formData.email && 
-                      formData.phone &&
                       selectedDesign;
 
   return (
@@ -229,30 +215,6 @@ export function BookingForm({ selectedDesign, onSubmit }: BookingFormProps) {
                 value={formData.email}
                 onChange={(e) => updateFormData('email', e.target.value)}
                 required
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="phone" className="flex items-center gap-2">
-                <Phone className="h-4 w-4" />
-                Phone Number *
-              </Label>
-              <Input
-                id="phone"
-                type="tel"
-                value={formData.phone}
-                onChange={(e) => updateFormData('phone', e.target.value)}
-                required
-              />
-            </div>
-
-            <div>
-              <Label htmlFor="address">Address</Label>
-              <Input
-                id="address"
-                value={formData.address}
-                onChange={(e) => updateFormData('address', e.target.value)}
-                placeholder="Street address, city, state, zip"
               />
             </div>
 
