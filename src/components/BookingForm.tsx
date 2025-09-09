@@ -10,7 +10,7 @@ import { CalendarDays, MapPin, Phone, Mail, User } from "lucide-react";
 
 interface BookingFormData {
   bodyPart: string;
-  size: string;
+  size: number;
   selectedDate: Date | undefined;
   timeSlot: string;
   firstName: string;

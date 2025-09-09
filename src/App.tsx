@@ -9,7 +9,7 @@ import { CheckCircle, Zap, Clock, Shield } from "lucide-react";
 
 interface BookingData {
   bodyPart: string;
-  size: string;
+  size: number;
   selectedDate: Date | undefined;
   timeSlot: string;
   firstName: string;
@@ -52,7 +52,7 @@ export default function App() {
                 <CheckCircle className="h-16 w-16 text-green-500 mx-auto mb-4" />
                 <h1 className="mb-4">Booking Confirmed!</h1>
                 <p className="text-muted-foreground mb-6">
-                  Thank you {bookingData?.firstName}! Your tattoo appointment has been successfully booked.
+                  Thank you {bookingData?.firstName}! Your tattoo enquiry has been submitted.
                 </p>
                 
                 <div className="bg-muted rounded-lg p-4 mb-6 text-left">
@@ -63,14 +63,14 @@ export default function App() {
                     <p><strong>Design Type:</strong> {selectedDesign === 'custom' ? 'Custom Design' : 'Gallery Design'}</p>
                     <p><strong>Body Part:</strong> {bookingData?.bodyPart}</p>
                     {selectedDesign !== 'custom' && bookingData?.size && (
-                      <p><strong>Size:</strong> {bookingData?.size} cm</p>
+                      <p><strong>Size:</strong> {String(bookingData?.size)} cm</p>
                     )}
                     <p><strong>Contact:</strong> {bookingData?.email}</p>
                   </div>
                 </div>
 
                 <div className="text-sm text-muted-foreground mb-6">
-                  <p>We'll send you a email shortly to confirm your enquiry has been received.</p>
+                  <p>Once the enquiry has been reviewed, the tattooist will reach out to you to further discuss the appointment details.</p>
                   {selectedDesign === 'custom' && (
                     <p className="text-primary">Please bring your design reference or be ready to discuss your ideas during the consultation.</p>
                   )}
