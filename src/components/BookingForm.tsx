@@ -6,7 +6,7 @@ import { Label } from "./ui/label";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "./ui/select";
 import { Textarea } from "./ui/textarea";
 import { Calendar } from "./ui/calendar";
-import { CalendarDays, MapPin, Phone, Mail, User } from "lucide-react";
+import { CalendarDays, MapPin, Mail, User } from "lucide-react";
 
 interface BookingFormData {
   bodyPart: string;
@@ -16,8 +16,6 @@ interface BookingFormData {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
-  address: string;
   notes: string;
 }
 

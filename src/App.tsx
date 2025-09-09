@@ -6,6 +6,7 @@ import { Card, CardContent } from "./components/ui/card";
 import { Separator } from "./components/ui/separator";
 import { Badge } from "./components/ui/badge";
 import { CheckCircle, Zap, Clock, Shield } from "lucide-react";
+import { ContactUs } from "./components/ContactUs";
 
 interface BookingData {
   bodyPart: string;
@@ -15,8 +16,6 @@ interface BookingData {
   firstName: string;
   lastName: string;
   email: string;
-  phone: string;
-  address: string;
   notes: string;
 }
 
@@ -33,6 +32,7 @@ export default function App() {
     setBookingData(data);
     setBookingSubmitted(true);
     // In a real app, this would send data to your backend
+    ContactUs;
     console.log("Booking submitted:", { selectedDesign, ...data });
   };
 
