@@ -27,22 +27,23 @@ export default function App() {
   // Initialize EmailJS on component mount
   useEffect(() => {
     initEmailJS();
-
-    // Check if EmailJS is configured
+    
+    // Check if EmailJS is configured (only warn once in development)
     const isConfigured = 
       import.meta.env?.VITE_EMAILJS_SERVICE_ID && 
       import.meta.env?.VITE_EMAILJS_SERVICE_ID !== 'service_zm2klxz';
     
-    if (!isConfigured) {
-      console.warn(
-        '📧 EmailJS not configured. Bookings will work but confirmation emails won\'t be sent.\n' +
-        'To enable emails, set up your EmailJS credentials in the .env file.\n' +
-        'See SETUP.md for detailed instructions.'
+    if (!isConfigured && !sessionStorage.getItem('emailjs-warning-shown')) {
+      console.info(
+        '📧 EmailJS Configuration:\n' +
+        'Bookings will work but confirmation emails are disabled.\n' +
+        'To enable emails, see SETUP.md for configuration instructions.'
       );
+      sessionStorage.setItem('emailjs-warning-shown', 'true');
     }
   }, []);
 
-    const handleDesignSelect = (designId: string) => {
+  const handleDesignSelect = (designId: string) => {
     setSelectedDesign(designId);
   };
 
@@ -60,10 +61,13 @@ export default function App() {
         const emailSent = await sendBookingConfirmation(emailData);
         
         if (emailSent) {
+          console.log("Booking confirmed! Check your email for details.");
         } else {
+          console.log("Booking confirmed! We'll contact you directly to confirm your appointment.");
         }
       } catch (emailError) {
         console.warn("Email sending failed, but booking was successful:", emailError);
+        console.log("Booking confirmed! We'll contact you directly to confirm your appointment.");
       }
       
       console.log("Booking submitted:", { selectedDesign, ...data });

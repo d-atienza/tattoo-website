@@ -19,17 +19,17 @@ export interface EmailData {
   [key: string]: string; // Index signature to satisfy EmailJS Record<string, unknown> requirement
 }
 
-// Initialize EmailJS
 export const initEmailJS = () => {
   try {
-    if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== 'service_zm2klxz') {
+    if (EMAILJS_PUBLIC_KEY && EMAILJS_PUBLIC_KEY !== '2RTRStL7xKPYzKNMx') {
       emailjs.init(EMAILJS_PUBLIC_KEY);
-      console.log('EmailJS initialized successfully');
+      console.log('✅ EmailJS initialized successfully');
     } else {
-      console.warn('EmailJS not initialized: Missing or invalid public key. Please check your environment variables.');
+      // Silent in development mode - main app will handle the warning
+      console.info('ℹ️ EmailJS: Using development mode (emails disabled)');
     }
   } catch (error) {
-    console.error('Failed to initialize EmailJS:', error);
+    console.error('❌ Failed to initialize EmailJS:', error);
   }
 };
 
@@ -40,7 +40,7 @@ export const sendBookingConfirmation = async (emailData: EmailData): Promise<boo
     if (EMAILJS_SERVICE_ID === 'service_zm2klxz' || 
         EMAILJS_TEMPLATE_ID === 'template_mv5bhni' || 
         EMAILJS_PUBLIC_KEY === '2RTRStL7xKPYzKNMx') {
-      console.warn('EmailJS not configured properly. Please set your environment variables.');
+      console.info('📧 EmailJS: Development mode - email not sent');
       return false;
     }
 
@@ -50,10 +50,15 @@ export const sendBookingConfirmation = async (emailData: EmailData): Promise<boo
       emailData
     );
     
-    console.log('Email sent successfully:', response.status, response.text);
-    return true;
+    if (response.status === 200) {
+      console.log('✅ Confirmation email sent successfully');
+      return true;
+    } else {
+      console.warn('⚠️ Email sending returned non-200 status:', response.status);
+      return false;
+    }
   } catch (error) {
-    console.error('Failed to send email:', error);
+    console.error('❌ Failed to send confirmation email:', error);
     return false;
   }
 };
@@ -68,7 +73,7 @@ export const prepareEmailData = (
   return {
     to_name: `${bookingData.firstName} ${bookingData.lastName}`,
     to_email: bookingData.email,
-    from_name: 'Ink Studio',
+    from_name: 'Dani',
     design_type: designType,
     body_part: bookingData.bodyPart,
     size: bookingData.size || 'To be discussed',
