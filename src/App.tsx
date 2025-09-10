@@ -32,7 +32,7 @@ export default function App() {
     setBookingData(data);
     setBookingSubmitted(true);
     // In a real app, this would send data to your backend
-    ContactUs;
+    ContactUs();
     console.log("Booking submitted:", { selectedDesign, ...data });
   };
 
