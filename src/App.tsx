@@ -1,12 +1,11 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import { TattooGallery } from "./components/TattooGallery";
 import { BookingForm } from "./components/BookingForm";
 import { Button } from "./components/ui/button";
 import { Card, CardContent } from "./components/ui/card";
 import { Separator } from "./components/ui/separator";
-import { Badge } from "./components/ui/badge";
-import { CheckCircle, Zap, Clock, Shield } from "lucide-react";
-import { ContactUs } from "./components/ContactUs";
+import { CheckCircle, Zap } from "lucide-react";
+import {initEmailJS, prepareEmailData, sendBookingConfirmation } from "../services/emailService";
 
 interface BookingData {
   bodyPart: string;
@@ -23,17 +22,56 @@ export default function App() {
   const [selectedDesign, setSelectedDesign] = useState<string | null>(null);
   const [bookingSubmitted, setBookingSubmitted] = useState(false);
   const [bookingData, setBookingData] = useState<BookingData | null>(null);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleDesignSelect = (designId: string) => {
+  // Initialize EmailJS on component mount
+  useEffect(() => {
+    initEmailJS();
+
+    // Check if EmailJS is configured
+    const isConfigured = 
+      import.meta.env?.VITE_EMAILJS_SERVICE_ID && 
+      import.meta.env?.VITE_EMAILJS_SERVICE_ID !== 'service_zm2klxz';
+    
+    if (!isConfigured) {
+      console.warn(
+        '📧 EmailJS not configured. Bookings will work but confirmation emails won\'t be sent.\n' +
+        'To enable emails, set up your EmailJS credentials in the .env file.\n' +
+        'See SETUP.md for detailed instructions.'
+      );
+    }
+  }, []);
+
+    const handleDesignSelect = (designId: string) => {
     setSelectedDesign(designId);
   };
 
-  const handleBookingSubmit = (data: BookingData) => {
-    setBookingData(data);
-    setBookingSubmitted(true);
-    // In a real app, this would send data to your backend
-    ContactUs();
-    console.log("Booking submitted:", { selectedDesign, ...data });
+  const handleBookingSubmit = async (data: BookingData) => {
+    setIsSubmitting(true);
+    
+    try {
+      // Always set booking data and mark as submitted
+      setBookingData(data);
+      setBookingSubmitted(true);
+      
+      // Try to send confirmation email (non-blocking)
+      try {
+        const emailData = prepareEmailData(data, selectedDesign);
+        const emailSent = await sendBookingConfirmation(emailData);
+        
+        if (emailSent) {
+        } else {
+        }
+      } catch (emailError) {
+        console.warn("Email sending failed, but booking was successful:", emailError);
+      }
+      
+      console.log("Booking submitted:", { selectedDesign, ...data });
+    } catch (error) {
+      console.error("Booking submission error:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   const resetBooking = () => {
@@ -183,3 +221,4 @@ export default function App() {
     </div>
   );
 }
+
